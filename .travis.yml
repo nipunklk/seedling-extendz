@@ -1,22 +1,37 @@
-language: java
-sudo: required
+language: node_js
+node_js:
+  - "12"
+sudo: true
 
-notifications:  
-  email:  
-    recipients:
-    - jude.mahipalamudali@outlook.com
-    - harinwijesekara@gmail.com
-    - irshadhassan30@gmail.com
-    - hrandika@hotmail.com
-    on_success: always  
-    on_failure: always
-
-services:
-  - docker
+addons:
+  chrome: stable
 
 
-before_install:
-  - cd ./seedling-spring
-  - tar -cJf src.tar.xz src
-  - docker build -t seedling/spring -f Dockerfile.dev .
+script:
+  - yarn build --prod
+
+
+
+
+# language: java
+# sudo: required
+
+# notifications:  
+#   email:  
+#     recipients:
+#     - jude.mahipalamudali@outlook.com
+#     - harinwijesekara@gmail.com
+#     - irshadhassan30@gmail.com
+#     - hrandika@hotmail.com
+#     on_success: always  
+#     on_failure: always
+
+# services:
+#   - docker
+
+
+# before_install:
+#   - cd ./seedling-spring
+#   - tar -cJf src.tar.xz src
+#   - docker build -t seedling/spring -f Dockerfile.dev .
 
