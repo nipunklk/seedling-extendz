@@ -8,6 +8,8 @@ addons:
 
 
 script:
+  - cd ./seedling-angular
+  - npm install
   - npm run prod
 
 
