@@ -1,0 +1,78 @@
+<mat-sidenav-container class="example-container admin-theme">
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    [opened]="state.sideNavOpened$ | async"
+    fxLayout="column"
+    class="sidenav"
+  >
+    <div class="profile-wrap">
+      <!-- <div class="logo-wrap" fxLayout="row" fxLayoutAlign="center center">
+        <app-logo></app-logo>
+      </div> -->
+      <img class="profile-pic" src="assets/img/logo.png" alt="logo" />
+
+      <p class="email">{{ appstate.email }}</p>
+    </div>
+    <!-- <mat-nav-list>
+      <h3 matSubheader>Components</h3>
+      <mat-list-item *ngFor="let c of components" [routerLink]="c.url">
+        <mat-icon matListIcon class="nav-icon">{{ c.icon }}</mat-icon>
+        <h4 matLine>{{ c.name }}</h4>
+      </mat-list-item>
+      <mat-list-item (click)="state.logout()">
+        <mat-icon matListIcon class="nav-icon"></mat-icon>
+        <a matLine>Logout</a>
+   
+      </mat-list-item>
+    </mat-nav-list> -->
+    <mat-accordion >
+      <mat-expansion-panel
+     
+        *ngFor="let a of nav"
+        class="mat-elevation-z0 expand-panel"
+        [hideToggle]="a?.url"
+        (click)="goTo(a)"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title> {{ a.name }} </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list dense>
+          <mat-list-item *ngFor="let c of a.children" [routerLink]="c.url">
+            <!-- <mat-icon matListIcon class="nav-icon">event</mat-icon> -->
+            <h4 matLine>{{ c.name }}</h4>
+          </mat-list-item>
+          <!-- <mat-list-item (click)="state.logout()">
+            <mat-icon matListIcon class="nav-icon"></mat-icon>
+            <a matLine>Logout</a>
+          </mat-list-item> -->
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-sidenav>
+
+  <mat-sidenav
+    class="notifications"
+    position="end"
+    mode="over"
+    [opened]="state.rightSidenavOpened$ | async"
+    (closedStart)="state.toggleRightSidenav()"
+  >
+    <p class="mat-display-1 title">Notifications</p>
+    <mat-divider></mat-divider>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="state.toggleSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span fxFlex></span>
+      <button mat-icon-button (click)="state.toggleRightSidenav()">
+        <mat-icon>notifications</mat-icon>
+      </button>
+    </mat-toolbar>
+    <!--  -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

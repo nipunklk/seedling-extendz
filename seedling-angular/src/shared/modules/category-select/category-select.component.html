@@ -1,0 +1,6 @@
+<mat-selection-list dense *ngIf="items?.length > 0" (selectionChange)="onSelection($event)" >
+  <h3 *ngIf="subHeader" matSubheader>{{ subHeader }}</h3>
+  <mat-list-option mat-list-item *ngFor="let i of items" [value]="i.url" [selected]="i._selected"
+    >{{ i.name }}
+  </mat-list-option>
+</mat-selection-list>

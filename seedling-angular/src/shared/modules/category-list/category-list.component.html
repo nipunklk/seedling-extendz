@@ -1,0 +1,36 @@
+<div class="categories">
+  <!-- <span mat-button [matMenuTriggerFor]="animals" #category="matMenuTrigger"></span>
+  <mat-menu #animals="matMenu" [hasBackdrop]="false">
+    <button
+      *ngFor="let category of categories"
+      mat-menu-item
+      appCategory
+      [category]="category"
+      [matMenuTriggerFor]="subCategoriesMenu"
+      [matMenuTriggerData]="{ subCategories: category.subCategories }"
+      fxLayoutAlign="start center"
+    >
+      <img [src]="category.image" />
+      <span class="label"> {{ category.name }}</span>
+    </button>
+  </mat-menu> -->
+  <mat-nav-list dense>
+    <a mat-list-item *ngFor="let category of categories" appCategory [category]="category">
+      <!-- <a matLine href="...">{{ link }}</a> -->
+      <img matListIcon [src]="category.image" />
+      <h3 matLine>
+        {{ category.name }}
+      </h3>
+    </a>
+  </mat-nav-list>
+</div>
+
+<mat-menu #subCategoriesMenu="matMenu">
+  <ng-template matMenuContent let-subCategories="subCategories">
+    <button *ngFor="let sub of subCategories" mat-menu-item fxLayoutAlign="start center">
+      <!-- <img [src]="sub.image" /> -->
+      <!-- <span class="label"></span> -->
+      {{ sub.name }}
+    </button>
+  </ng-template>
+</mat-menu>

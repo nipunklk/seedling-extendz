@@ -1,0 +1,14 @@
+<ext-entity
+  [entityMeta]="data.entityMeta"
+  [entity]="data.entity"
+  (action)="onAction($event)"
+></ext-entity>
+
+<ng-template #alertDialog>
+  <h2 matDialogTitle>Alert</h2>
+  <p matDialogContent>Are you sure?</p>
+  <mat-dialog-actions align="end">
+    <button mat-button matDialogClose="false">No</button>
+    <button mat-button matDialogClose="true">Yes</button>
+  </mat-dialog-actions>
+</ng-template>

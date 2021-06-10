@@ -1,0 +1,22 @@
+.gadget {
+  font-size: 2em;
+  color:rgb(108,162,46)
+}
+
+.shop {
+  font-size: 2em;
+  font-weight: 100;
+  color: rgb(55,172,198)
+}
+/**
+  XS
+*/
+@media screen and (min-width: 0px) and (max-width: 599.99px) {
+  .gadget {
+    font-size: 1.5em;
+  }
+
+  .shop {
+    font-size: 1.5em;
+  }
+}

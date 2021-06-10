@@ -1,0 +1,73 @@
+version: "3"
+networks:
+  seedling-network:
+volumes:
+  seedling-postgresql:
+    driver: local
+  seedling-pgadmin:
+    driver: local
+services:
+  # s3mock:
+  #   image: adobe/s3mock:2.1.28
+  #   container_name: seedling-s3mock
+  #   ports: 
+  #     - 9090:9090
+  #     - 9191:9191
+  minio:
+    image: minio/minio:RELEASE.2021-05-26T00-22-46Z
+    container_name: seediling-minio
+    volumes:
+      - ./data/minio:/data
+    environment:
+      MINIO_ROOT_USER: AKIAIOSFODNN7EXAMPLEs
+      MINIO_ROOT_PASSWORD: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEYs
+    command: ["server", "/data"]
+    networks:
+      - seedling-network
+    ports:
+      - 9090:9090
+      - 9000:9000
+  postgresql:
+    image: postgres:12.1
+    container_name: seedling-postgresql
+    volumes:
+      - seedling-postgresql:/var/lib/postgresql/data/
+    networks:
+      - seedling-network
+    environment:
+      POSTGRES_DB: seedling
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: "*T-k<>MEe_9d7-TK"
+    ports:
+      - 5432:5432
+  pgadmin:
+    image: dpage/pgadmin4:4.30
+    container_name: seedling-pgadmin
+    logging:
+      driver: none
+    volumes:
+      - seedling-pgadmin:/var/lib/pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@seedling.lk
+      PGADMIN_DEFAULT_PASSWORD: "pf|q#~v>X}l0h#yD"
+    networks:
+      - seedling-network
+    ports:
+      - 8081:80
+  # keycloak:
+  #   image: jboss/keycloak:11.0.3
+  #   container_name: seedling-keycloak
+  #   networks:
+  #     - seedling-network
+  #   ports:
+  #     - 8082:8080
+  #   environment:
+  #     DB_VENDOR: POSTGRES
+  #     DB_ADDR: postgresql
+  #     DB_DATABASE: keycloak
+  #     DB_USER: pguser
+  #     DB_PASSWORD: "*T-k<>MEe_9d7-TK"
+  #     KEYCLOAK_USER: admin@seedling.lk
+  #     KEYCLOAK_PASSWORD: gadgetM@N12x89
+  #   depends_on:
+  #     - postgresql

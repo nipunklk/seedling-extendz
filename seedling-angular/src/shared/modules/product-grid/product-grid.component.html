@@ -1,0 +1,32 @@
+<!-- <div
+  fxLayout="row wrap"
+  fxLayout.xs="column"
+  style="background-color: red;"
+  fxLayoutAlign="space-between start"
+  fxLayoutAlign.xs="center center"
+  *ngIf="page?._embedded.products as products"
+>
+  <span fxFlex="30" fxFlex.xs="80" *ngIf="products.length > 0; else empty">
+    <app-product-card *ngFor="let p of products" [product]="p" class="product"></app-product-card>
+  </span>
+
+  <ng-template #empty>
+    <p class="mat-h1 center">No products under this filter!</p>
+  </ng-template>
+</div> -->
+
+<div
+  fxFlex
+  fxLayout="row wrap"
+  fxLayoutAlign="space-between start"
+  fxLayoutAlign.xs="center center"
+  *ngIf="page?._embedded.products as products"
+>
+  <span *ngFor="let p of products" fxFlex="32" fxFlex.xs="95" class="product">
+    <app-product-card [product]="p"></app-product-card>
+  </span>
+</div>
+
+<ng-template #empty>
+  <p class="mat-h1 center">No products under this filter!</p>
+</ng-template>

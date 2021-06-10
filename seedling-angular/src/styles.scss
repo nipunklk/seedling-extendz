@@ -1,0 +1,152 @@
+@import '~@angular/material/theming';
+@import '~angular-calendar/css/angular-calendar.css';
+
+$custom-typography: mat-typography-config(
+  $font-family: 'Play, monospace',
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500),
+);
+
+@include angular-material-typography($custom-typography);
+@include mat-core();
+
+$vloger-primary: mat-palette($mat-light-green);
+$vloger-accent: mat-palette($mat-blue, A200, A100, A400);
+$vloger-warn: mat-palette($mat-red);
+
+$vloger-theme: mat-light-theme($vloger-primary, $vloger-accent, $vloger-warn);
+@include angular-material-theme($vloger-theme);
+
+.admin-theme {
+  $p: mat-palette($mat-amber);
+  $a: mat-palette($mat-blue);
+  $w: mat-palette($mat-red);
+  $admin-theme: mat-light-theme($p, $a, $w);
+  @include angular-material-theme($admin-theme);
+}
+
+.dark-theme {
+  color: $light-primary-text;
+  $dark-primary: mat-palette($mat-gray, 900);
+  $dark-accent: mat-palette($mat-amber, A400, A100, A700);
+  $dark-warn: mat-palette($mat-red);
+  $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+  @include angular-material-theme($dark-theme);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.page {
+  padding: 0 15vw 0 15vw;
+}
+
+.container-base {
+  min-height: calc(100vh);
+  margin-top: 64px;
+}
+
+.container {
+  @extend .container-base;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.white {
+  color: white;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(222, 222, 222, 0.75);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  //width: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  // border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.snack-bar-info {
+  background: rgb(33, 150, 243);
+  background: linear-gradient(360deg, rgba(33, 150, 243, 1) 0%, rgba(50, 50, 50, 1) 10%);
+  color: white;
+}
+
+.snack-bar-success {
+  background: rgb(127, 255, 0);
+  background: linear-gradient(360deg, rgba(127, 255, 0, 1) 0%, rgba(50, 50, 50, 1) 10%);
+  color: white;
+}
+
+.snack-bar-error {
+  background: rgb(204, 0, 0);
+  background: linear-gradient(360deg, rgba(204, 0, 0, 1) 0%, rgba(50, 50, 50, 1) 10%);
+  color: white;
+}
+
+.ext-advance-select .mat-dialog-content {
+  padding: 0;
+}
+
+.ext-advance-select .mat-dialog-container {
+  padding-top: 0;
+}
+
+/**
+  XS
+*/
+@media screen and (min-width: 0px) and (max-width: 599.99px) {
+  .page {
+    padding: 0 2vw 0 2vw;
+  }
+
+  .container-base {
+    min-height: calc(100vh);
+    margin-top: 56px;
+  }
+}
+
+/**
+  SM
+*/
+@media screen and (min-width: 600px) and (max-width: 959.99px) {
+}
+
+/**
+  MD
+*/
+@media screen and (min-width: 960px) and (max-width: 1279.99px) {
+}
+
+/**
+  LG
+*/
+@media screen and (min-width: 1280px) and (max-width: 1919.99px) {
+  .mat-display-4 {
+    font-size: 210px;
+  }
+}
+
+/**
+  XL
+*/
+@media screen and (min-width: 1920px) and (max-width: 4999.99px) {
+}

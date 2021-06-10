@@ -1,0 +1,30 @@
+spring:
+  data:
+    rest:
+      base-path: /api
+  main:
+    allow-bean-definition-overriding: true
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: create
+  datasource:
+    initialization-mode: always
+    url: jdbc:postgresql://localhost:5432/seedling
+    username: pguser
+    password: "*T-k<>MEe_9d7-TK"
+    driver-class-name: org.postgresql.Driver
+  jackson:
+    serialization:
+      indent-output: true
+    default-property-inclusion: non-null
+
+minio:
+  url: http://127.0.0.1:9000
+  access:
+    name: AKIAIOSFODNN7EXAMPLEs
+    secret: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEYs
+  bucket:
+    name: seedling
+  default:
+    folter: /

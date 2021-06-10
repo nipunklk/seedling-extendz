@@ -1,0 +1,13 @@
+<div [ngClass]="{'dark-theme': isDark }">
+  <router-outlet></router-outlet>
+</div>
+
+<div class="loading-container" *ngIf="appState.loading$ | async">
+  
+  <div class="router-load-indicator">
+    <div class="lds-ripple">
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</div>

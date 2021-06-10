@@ -1,0 +1,74 @@
+mat-sidenav-container {
+  width: 100%;
+  height: 100vh;
+}
+
+.sidenav {
+  width: 18%;
+  // background-color: #434343;
+  // border: none;
+  // background-blend-mode: multiply;
+  // background-image: url('/assets/img/marita-kavelashvili-ugnrXk1129g-unsplash.jpg');
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // background-position: center;
+}
+
+.notifications {
+  width: 25%;
+}
+
+.title {
+  text-align: center;
+  padding: 2vh 0 2vh 0;
+  margin: 0;
+}
+
+mat-sidenav div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  p {
+    text-align: center;
+  }
+}
+
+.expand-panel {
+  background-color: transparent;
+}
+
+
+.profile-wrap {
+  display: flex;
+  align-items: center;
+  background-color: rgba($color: #fff, $alpha: 1);
+  justify-content: center;
+}
+
+.logo-wrap {
+  height: 64px;
+}
+
+.logo {
+  padding: 1vh 2vw 1vh 2vw;
+}
+
+.profile-pic {
+  width: 200px;
+  // height: 150px;
+  // border-radius: 50%;
+  margin-top: 2vh;
+}
+
+.email {
+  margin-top: 1vh;
+  color: #999;
+}
+.nav-icon {
+  color: #999;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}

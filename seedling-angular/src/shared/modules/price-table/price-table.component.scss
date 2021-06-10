@@ -1,0 +1,29 @@
+table {
+  width: 100%;
+}
+
+mat-icon {
+  color: #999;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+th,
+td {
+  overflow: hidden;
+  // width: 200px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/**
+    XS
+  */
+@media screen and (min-width: 0px) and (max-width: 599.99px) {
+  .q {
+    width: 45%;
+  }
+}

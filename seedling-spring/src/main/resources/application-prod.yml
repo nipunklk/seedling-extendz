@@ -1,0 +1,9 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+  datasource:
+    url: jdbc:postgresql://postgresql:5432/seedling
+
+minio:
+  url: http://minio:9000

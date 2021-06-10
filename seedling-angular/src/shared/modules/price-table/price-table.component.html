@@ -1,0 +1,74 @@
+<table class="mat-elevation-z1" mat-table [dataSource]="skuDataSource">
+  <ng-container matColumnDef="cartQuantity">
+    <th mat-header-cell *matHeaderCellDef class="q">Quantity</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button>
+        <ng-content *ngTemplateOutlet="minus"></ng-content>
+      </button>
+      <button mat-icon-button>{{ element.cartQuantity }}</button>
+      <!-- <span fxFlex></span> -->
+      <button mat-icon-button (click)="add(element)">
+        <ng-content *ngTemplateOutlet="addIcon"></ng-content>
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- Variety Column -->
+  <ng-container matColumnDef="color">
+    <th mat-header-cell *matHeaderCellDef>Color</th>
+    <td mat-cell *matCellDef="let element">{{ element.color.name }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="capacity">
+    <th mat-header-cell *matHeaderCellDef>Capacity</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.capacity.value }} {{ element.capacity.unit }}
+    </td>
+  </ng-container>
+
+  <!-- Variety Column -->
+  <ng-container matColumnDef="variety">
+    <th mat-header-cell *matHeaderCellDef>Variety</th>
+    <td mat-cell *matCellDef="let element">{{ element.variety }}</td>
+  </ng-container>
+
+  <!-- Size Column -->
+  <ng-container matColumnDef="size">
+    <th mat-header-cell *matHeaderCellDef>Size</th>
+    <td mat-cell *matCellDef="let element">{{ element.size }}</td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef>Price</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.price.value | currency: element.price.currency.code + ' ' }}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<div style="margin-top: 1vh">
+  <span fxFlex></span>
+  <button mat-raised-button (click)="addToCart(product)">Add to cart</button>
+  <span fxFlex="2"></span>
+  <button mat-raised-button [routerLink]="['/cart']">Checkout</button>
+</div>
+
+<ng-template #addIcon>
+  <mat-icon style="color: #388e3c">
+    <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+    </svg>
+  </mat-icon>
+</ng-template>
+
+<ng-template #minus>
+  <mat-icon style="color: #ff5252">
+    <svg viewBox="0 0 24 24">
+      <path fill="currentColor" d="M19,13H5V11H19V13Z" />
+    </svg>
+  </mat-icon>
+</ng-template>

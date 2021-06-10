@@ -1,0 +1,47 @@
+.categories {
+  margin-top: 1vh;
+  // padding:0 16px;
+  min-height: 48vh;
+  width: 15vw;
+  background-color: white;
+}
+
+.label {
+  margin-left: 1vw;
+}
+
+a {
+  text-decoration: none;
+}
+
+.list {
+  background-color: rgba(255, 255, 255, 1.9);
+  min-height: 100%;
+  width: 15vw;
+}
+
+mat-list-item {
+  color: white;
+}
+
+.cdk-overlay-container {
+  z-index: 1;
+}
+
+img {
+  width: 40px;
+}
+
+a * {
+  pointer-events: none;
+}
+
+
+/**
+  XS
+*/
+@media screen and (min-width: 0px) and (max-width: 599.99px) {
+  .categories {
+    width: 100%;
+  }
+}

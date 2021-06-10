@@ -1,0 +1,14 @@
+<mat-card
+  appMaterialElevation
+  [routerLink]="['/products', product.url]"
+  matRipple
+  (click)="appState.loading(true)"
+>
+  <img mat-card-image [src]="product.image" alt="image" />
+  <mat-card-content>
+    <mat-card-title class="mat-card-title">{{ product.name }}</mat-card-title>
+    <mat-card-subtitle
+      >{{ product.price.value | currency: product.price.currency.code + ' ' }}
+    </mat-card-subtitle>
+  </mat-card-content>
+</mat-card>

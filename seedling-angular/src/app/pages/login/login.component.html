@@ -1,0 +1,26 @@
+<div fxLayout="row" class="login-container" class="right">
+  <div class="login-form-container" fxFlex="40" fxLayout="column" fxLayoutAlign="center center">
+    <p class="sign-in">Login</p>
+    <form class="login-form" [formGroup]="loginFormGroup" (ngSubmit)="onSubmit()" fxLayout="column">
+      <mat-form-field appearance="outline" *ngIf="loginFormGroup.controls['email'] as e">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" formControlName="email" />
+        <mat-error *ngIf="e.hasError('required') && e.touched">Email is <b>required</b></mat-error>
+        <mat-error *ngIf="e.hasError('minlength')">Email is not valid.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" *ngIf="loginFormGroup.controls['password'] as p">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" autocomplete />
+        <mat-error *ngIf="p.hasError('required') && p.touched"
+          >Password is <b>required</b></mat-error
+        >
+        <mat-error *ngIf="p.hasError('minlength')"
+          >Password should contain at least 4 characters.</mat-error
+        >
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" [disabled]="!loginFormGroup.valid">Login</button>
+    </form>
+  </div>
+</div>

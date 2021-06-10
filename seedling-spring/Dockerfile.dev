@@ -1,0 +1,14 @@
+FROM amd64/openjdk:11.0.8-slim AS BUILD_IMAGE
+
+ENV APP_HOME=/root/dev/myapp/
+RUN mkdir -p $APP_HOME/src/main/java
+WORKDIR $APP_HOME
+
+COPY build.gradle.kts gradlew gradle.properties $APP_HOME 
+COPY gradle $APP_HOME/gradle
+
+# download dependencies
+RUN ./gradlew dependencies
+RUN ls
+ADD src.tar.xz .
+RUN ./gradlew build -x test

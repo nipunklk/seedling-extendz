@@ -1,0 +1,19 @@
+mat-card {
+  cursor: pointer;
+  outline: none;
+}
+
+img {
+  height: 20vh;
+  object-fit: contain;
+}
+
+.mat-card-title {
+  display: block;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  line-height: 1.8em;
+  font-size: 1em;
+  font-weight: bold;
+}

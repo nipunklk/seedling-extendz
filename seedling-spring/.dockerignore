@@ -1,0 +1,6 @@
+build/
+src/
+.gradle/
+.vscode/
+.sts4-cache/
+.settings/
