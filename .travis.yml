@@ -23,7 +23,7 @@ after_success:
 - echo "deploy to 178.128.99.175"
 - cd ./seedling-angular
 - tar cvfz dist.tar.gz dist/
-- scp dist.tar.gz deploy@178.128.99.175:~/
+- scp dist.tar.gz travisci@178.128.99.175:~/
 
 
 before_install:
