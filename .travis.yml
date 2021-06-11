@@ -21,6 +21,3 @@ after_success:
 - cd ./seedling-angular
 - tar cvfz src.tar.gz src/
 - scp src.tar.gz travisci@178.128.99.175:~/
-before_install:
-- openssl aes-256-cbc -K $encrypted_92725ca94bf5_key -iv $encrypted_92725ca94bf5_iv
-  -in deploy-key.enc -out deploy-key -d
