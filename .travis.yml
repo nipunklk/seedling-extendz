@@ -1,68 +1,42 @@
 matrix:
   include:
-    # - language: java
-    #   sudo: required
-
-    #   services:
-    #     - docker
-
-
-    #   before_install:
-    #     - cd ./seedling-spring
-    #     - tar -cJf src.tar.xz src
-    #     - docker build -t seedling/spring -f Dockerfile.dev .
-    
-    - language: node.js
-      node_js: 
-        - "12.0"
-      sudo: required  
-
-      script:
-        - cd ./seedling-angular
-        - npm install
-        - ng build --prod
-
-
+  - language: node.js
+    node_js:
+    - '12.0'
+    sudo: required
+    script:
+    - cd ./seedling-angular
+    - npm install
+    - ng build --prod
 addons:
   ssh_known_hosts:
   - 178.128.99.175
-
 env:
   global:
-  - REMOTEAPPDIR=/home/travisci
-  - REMOTEUSER=travisci
+  - REMOTEAPPDIR=/home/root
+  - REMOTEUSER=root
   - REMOTEHOST=178.128.99.175
-
 after_success:
 - cd ..
 - pwd
 - cat deploy-key
 - chmod 600 deploy-key && mv deploy-key ~/.ssh/id_rsa
 - echo "deploy to 178.128.99.175"
-
 - cp -r seedling-angular/dist/seeding/browser/ seedling-spring/src/main/resources/static
 - cd ./seedling-spring
 - tar -cJf src.tar.xz src
-- ssh travisci@178.128.99.175  mkdir travisci@178.128.99.175:~/app
-- scp -r gradle travisci@178.128.99.175:~/app
-- scp build.gradle.kts travisci@178.128.99.175:~/app
-- scp gradle.properties travisci@178.128.99.175:~/app
-- scp src.tar.xz travisci@178.128.99.175:~/app
-- scp Dockerfile travisci@178.128.99.175:~/app
+- ssh root@178.128.99.175  mkdir root@178.128.99.175:~/app
+- scp -r gradle root@178.128.99.175:~/app
+- scp build.gradle.kts root@178.128.99.175:~/app
+- scp gradle.properties root@178.128.99.175:~/app
+- scp src.tar.xz root@178.128.99.175:~/app
+- scp Dockerfile root@178.128.99.175:~/app
 - cd ..
-- scp serverstart.sh travisci@178.128.99.175:~/app
-
-
-- ssh travisci@178.128.99.175  sudo chown -R travisci:travisci /home/travisci/app
-
-- ssh travisci@178.128.99.175  chmod 600 /home/travisci/app/serverstart.sh
-- ssh travisci@178.128.99.175  chmod +x /home/travisci/app/serverstart.sh
-- ssh travisci@178.128.99.175  chmod +x /home/travisci/app/gradlew
-# - ssh travisci@178.128.99.175  sudo ./home/travisci/app/serverstart.sh
-
-
+- scp serverstart.sh root@178.128.99.175:~/app
+- ssh root@178.128.99.175  sudo chown -R root:root /home/root/app
+- ssh root@178.128.99.175  chmod 600 /home/root/app/serverstart.sh
+- ssh root@178.128.99.175  chmod +x /home/root/app/serverstart.sh
+- ssh root@178.128.99.175  chmod +x /home/root/app/gradlew
 before_install:
 - openssl aes-256-cbc -K $encrypted_92725ca94bf5_key -iv $encrypted_92725ca94bf5_iv
   -in deploy-key.enc -out deploy-key -d
-
-
