@@ -6,7 +6,7 @@ addons:
   ssh_known_hosts:
   - 178.128.99.175
 script:
-# - cd ./seedling-angular
+- cd ./seedling-angular
 # - npm install
 # - npm run prod
 env:
