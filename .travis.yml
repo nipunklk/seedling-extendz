@@ -5,10 +5,12 @@ sudo: true
 addons:
   chrome: stable
 script:
-- cd ./seedling-angular
 - npm install
 - npm run prod
-- tar cvfz dist.tar.gz dist/
+
+addons:
+  ssh_known_hosts:
+  - 178.128.99.175
 
 env:
   global:
@@ -20,9 +22,11 @@ after_success:
 - chmod 600 deploy-key && mv deploy-key ~/.ssh/id_rsa
 - echo "deploy to 178.128.99.175"
 - cd ./seedling-angular
+- tar cvfz dist.tar.gz dist/
 - scp dist.tar.gz deploy@178.128.99.175:~/
 
 
 before_install:
 - openssl aes-256-cbc -K $encrypted_92725ca94bf5_key -iv $encrypted_92725ca94bf5_iv
   -in deploy-key.enc -out deploy-key -d
+- cd ./seedling-angular
