@@ -7,8 +7,6 @@ addons:
   - 178.128.99.175
 script:
 - cd ./seedling-angular
-# - npm install
-# - npm run prod
 env:
   global:
   - REMOTEAPPDIR=/home/travisci
@@ -18,15 +16,6 @@ after_success:
 - cd ..
 - pwd
 - chmod 600 deploy-key && mv deploy-key ~/.ssh/id_rsa
-
-
-# - pwd
-# - ls
-# - eval "$(ssh-agent -s)"
-# - cat deploy-key
-# - chmod 600 deploy-key
-# - echo -e "Host 178.128.99.175\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-# - ssh-add deploy-key
 - echo "deploy to 178.128.99.175"
 - cd ./seedling-angular
 - tar cvfz src.tar.gz src/
