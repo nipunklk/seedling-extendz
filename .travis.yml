@@ -15,6 +15,7 @@ env:
 after_success:
 - cd ..
 - pwd
+- cat deploy-key
 - chmod 600 deploy-key && mv deploy-key ~/.ssh/id_rsa
 - echo "deploy to 178.128.99.175"
 - cd ./seedling-angular
