@@ -18,7 +18,8 @@ after_success:
 - cd ./
 # - chmod 600 deploy-key && mv deploy-key ~/.ssh/id_rsa
 
-# - eval "$(ssh-agent -s)"
+- eval "$(ssh-agent -s)"
+- cat ./deploy-key
 - chmod 600 ./deploy_key
 - echo -e "Host 178.128.99.175\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - ssh-add ./deploy_key
