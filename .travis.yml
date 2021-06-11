@@ -31,6 +31,7 @@ after_success:
 - scp gradle.properties root@178.128.99.175:~/app
 - scp src.tar.xz root@178.128.99.175:~/app
 - scp Dockerfile root@178.128.99.175:~/app
+- scp docker-compose.yaml root@178.128.99.175:~/app 
 - cd ..
 - scp serverstart.sh root@178.128.99.175:~/app
 - ssh root@178.128.99.175  sudo chown -R root:root /home/root/app
