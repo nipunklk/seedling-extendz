@@ -49,9 +49,10 @@ after_success:
 - scp gradlew travisci@178.128.99.175:~/app
 - scp gradle.properties travisci@178.128.99.175:~/app
 - scp src.tar.gz travisci@178.128.99.175:~/app
+- scp Dockerfile travisci@178.128.99.175:~/app
 - cd ..
 - scp serverstart.sh travisci@178.128.99.175:~/app
-- scp Dockerfile travisci@178.128.99.175:~/app
+
 
 - ssh travisci@178.128.99.175  sudo chown -R travisci:travisci /home/travisci/app
 
