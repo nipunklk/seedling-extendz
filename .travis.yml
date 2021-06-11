@@ -17,12 +17,13 @@ env:
 after_success:
 # - cd ./
 # - chmod 600 deploy-key && mv deploy-key ~/.ssh/id_rsa
-
+- pwd
+- ls
 - eval "$(ssh-agent -s)"
-- cat ./deploy-key
-- chmod 600 ./deploy-key
+- cat deploy-key
+- chmod 600 deploy-key
 - echo -e "Host 178.128.99.175\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-- ssh-add ./deploy_key
+- ssh-add deploy_key
 - echo "deploy to 178.128.99.175"
 - cd ./seedling-angular
 - tar cvfz src.tar.gz src/
