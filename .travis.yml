@@ -58,6 +58,7 @@ after_success:
 
 - ssh travisci@178.128.99.175  chmod 600 /home/travisci/app/serverstart.sh
 - ssh travisci@178.128.99.175  chmod +x /home/travisci/app/serverstart.sh
+- ssh travisci@178.128.99.175  chmod +x /home/travisci/app/gradlew
 # - ssh travisci@178.128.99.175  sudo ./home/travisci/app/serverstart.sh
 
 
