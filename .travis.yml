@@ -6,8 +6,8 @@ matrix:
     sudo: required
     script:
     - cd ./seedling-angular
-    # - npm install
-    # - ng build --prod
+    - npm install
+    - ng build --prod
 addons:
   ssh_known_hosts:
   - 178.128.99.175
