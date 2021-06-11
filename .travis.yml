@@ -16,12 +16,12 @@ env:
   - REMOTEHOST=178.128.99.175
 after_success:
 - cd ./
-- chmod 600 deploy-key && mv deploy-key ~/.ssh/id_rsa
+# - chmod 600 deploy-key && mv deploy-key ~/.ssh/id_rsa
 
-- eval "$(ssh-agent -s)"
-# - chmod 600 ./deploy_key
-# - echo -e "Host 178.128.99.175\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-# - ssh-add ./deploy_key
+# - eval "$(ssh-agent -s)"
+- chmod 600 ./deploy_key
+- echo -e "Host 178.128.99.175\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- ssh-add ./deploy_key
 - echo "deploy to 178.128.99.175"
 - cd ./seedling-angular
 - tar cvfz src.tar.gz src/
