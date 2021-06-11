@@ -19,8 +19,8 @@ matrix:
 
       script:
         - cd ./seedling-angular
-        # - npm install
-        # - ng build --prod
+        - npm install
+        - ng build --prod
 
 
 addons:
@@ -40,15 +40,14 @@ after_success:
 - chmod 600 deploy-key && mv deploy-key ~/.ssh/id_rsa
 - echo "deploy to 178.128.99.175"
 
-# - cp -r seedling-angular/dist/seeding/browser/ seedling-spring/src/main/resources/static
+- cp -r seedling-angular/dist/seeding/browser/ seedling-spring/src/main/resources/static
 - cd ./seedling-spring
-# - tar -cJf src.tar.gz src
-# - ssh travisci@178.128.99.175  mkdir travisci@178.128.99.175:~/app
+- tar -cJf src.tar.xz src
+- ssh travisci@178.128.99.175  mkdir travisci@178.128.99.175:~/app
 - scp -r gradle travisci@178.128.99.175:~/app
 - scp build.gradle.kts travisci@178.128.99.175:~/app
-- scp gradlew travisci@178.128.99.175:~/app
 - scp gradle.properties travisci@178.128.99.175:~/app
-# - scp src.tar.gz travisci@178.128.99.175:~/app
+- scp src.tar.xz travisci@178.128.99.175:~/app
 - scp Dockerfile travisci@178.128.99.175:~/app
 - cd ..
 - scp serverstart.sh travisci@178.128.99.175:~/app
