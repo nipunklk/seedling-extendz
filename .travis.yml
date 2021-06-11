@@ -52,10 +52,10 @@ after_success:
 - cd ..
 - scp serverstart.sh travisci@178.128.99.175:~/app
 
-- ssh travisci@178.128.99.175  sudo chown -R travisci:travisci ~/app
+- ssh travisci@178.128.99.175  sudo chown -R travisci:travisci /home/travisci/app
 
-- ssh travisci@178.128.99.175  chmod 600 ~/app/serverstart.sh
-- ssh travisci@178.128.99.175  chmod +x ~/app/serverstart.sh
+- ssh travisci@178.128.99.175  chmod 600 /home/travisci/app/serverstart.sh
+- ssh travisci@178.128.99.175  chmod +x /home/travisci/app/serverstart.sh
 # - ssh travisci@178.128.99.175  sudo ./travisci@178.128.99.175:~/serverstart.sh
 
 
